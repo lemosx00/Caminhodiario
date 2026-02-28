@@ -63,10 +63,17 @@
             <div class="card">
                 <h3>📖 Consulta Bíblica</h3>
                 <div class="biblia-controles">
-                    <select id="biblia-livro"></select>
-                    <input type="number" id="biblia-cap" placeholder="Cap" min="1" value="1">
-                    <button onclick="lerCapitulo()">Ler</button>
+                    <select id="biblia-livro" onchange="resetarCapitulo()"></select>
+                    
+                    <div class="navegacao-capitulo">
+                        <button onclick="mudarCapitulo(-1)" class="btn-nav">⬅️</button>
+                        <input type="number" id="biblia-cap" value="1" min="1">
+                        <button onclick="mudarCapitulo(1)" class="btn-nav">➡️</button>
+                    </div>
+                    
+                    <button onclick="lerCapitulo()" class="btn-primary">Ler Capítulo</button>
                 </div>
+
                 <div id="leitura-biblica" class="leitura-container">
                     <p>Selecione um livro e capítulo para ler.</p>
                 </div>

@@ -199,3 +199,96 @@ function atualizarPlacar() {
     else if(pontos >= 50) status.innerText = "🌱 Servo Fiel";
     else status.innerText = "🌱 Servo Esforçado";
 }
+// Função para resetar o input de capítulo quando mudar o livro
+function resetarCapitulo() {
+    document.getElementById('biblia-cap').value = 1;
+    lerCapitulo();
+}
+
+// Função para navegar entre os capítulos
+function mudarCapitulo(direcao) {
+    const inputCap = document.getElementById('biblia-cap');
+    const livroIdx = document.getElementById('biblia-livro').value;
+    
+    if (!bibliaCache) return;
+
+    let novoCap = parseInt(inputCap.value) + direcao;
+    const totalCapitulos = bibliaCache[livroIdx].chapters.length;
+
+    // Verifica se o novo capítulo é válido
+    if (novoCap >= 1 && novoCap <= totalCapitulos) {
+        inputCap.value = novoCap;
+        lerCapitulo();
+        // Rola a tela para o topo para facilitar a leitura
+        document.getElementById('leitura-biblica').scrollTop = 0;
+    } else {
+        if (novoCap < 1) alert("Você já está no primeiro capítulo.");
+        if (novoCap > totalCapitulos) alert("Este é o último capítulo deste livro.");
+    }
+}
+// --- LÓGICA DO MURAL DE ORAÇÃO ---
+
+// Carrega as orações assim que a página abre
+window.addEventListener('load', () => {
+    exibirOracoes();
+});
+
+function adicionarPedido() {
+    const input = document.getElementById('input-oracao');
+    const texto = input.value.trim();
+
+    if (texto === "") {
+        alert("Por favor, digite um pedido.");
+        return;
+    }
+
+    let oracoes = JSON.parse(localStorage.getItem('minhasOracoes')) || [];
+    
+    oracoes.unshift({
+        texto: texto,
+        data: new Date().toLocaleDateString(),
+        concluida: false // Nova propriedade para controlar o estado
+    });
+
+    localStorage.setItem('minhasOracoes', JSON.stringify(oracoes));
+    input.value = "";
+    exibirOracoes();
+}
+
+function exibirOracoes() {
+    const listaUl = document.getElementById('lista-oracoes');
+    const oracoes = JSON.parse(localStorage.getItem('minhasOracoes')) || [];
+
+    listaUl.innerHTML = oracoes.map((o, index) => `
+        <li class="item-oracao ${o.concluida ? 'concluida' : ''}">
+            <div class="texto-oracao">
+                <span>${o.texto}</span>
+                <small>${o.data}</small>
+            </div>
+            
+            <div class="acoes-oracao">
+                <button onclick="alternarOracao(${index})" class="btn-check" title="Alcançada">
+                    ${o.concluida ? '✅' : '✔️'}
+                </button>
+                <button onclick="removerOracao(${index})" class="btn-remover" title="Remover">
+                    ✕
+                </button>
+            </div>
+        </li>
+    `).join('') || "<p style='color: #999; font-size: 0.8rem; text-align: center;'>Nenhum pedido registrado.</p>";
+}
+
+// Função para marcar como alcançada/concluída
+function alternarOracao(index) {
+    let oracoes = JSON.parse(localStorage.getItem('minhasOracoes')) || [];
+    oracoes[index].concluida = !oracoes[index].concluida; // Inverte o estado
+    localStorage.setItem('minhasOracoes', JSON.stringify(oracoes));
+    exibirOracoes();
+}
+
+function removerOracao(index) {
+    let oracoes = JSON.parse(localStorage.getItem('minhasOracoes')) || [];
+    oracoes.splice(index, 1);
+    localStorage.setItem('minhasOracoes', JSON.stringify(oracoes));
+    exibirOracoes();
+}

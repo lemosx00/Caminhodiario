@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caminho Diário 3.0</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <div class="user-info">
+                <span id="status-fiel">🌱 Servo Esforçado</span>
+                <span class="points-badge"><span id="pontos">0</span> pts ✨</span>
+            </div>
+            <select id="select-versao" onchange="trocarVersao()">
+                <option value="nvi">NVI</option>
+                <option value="acf">ACF</option>
+                <option value="aa">ARA</option>
+            </select>
+        </header>
+
+        <nav class="tabs">
+            <button onclick="mostrarAba('hoje')" class="tab-btn active">Hoje</button>
+            <button onclick="mostrarAba('biblia')" class="tab-btn">Bíblia</button>
+            <button onclick="mostrarAba('historico')" class="tab-btn">Meu Histórico</button>
+        </nav>
+
+        <section id="aba-hoje" class="content-section">
+            <div class="card main-card">
+                <div class="badge">Desafio do Dia</div>
+                <h2 id="titulo-desafio">Carregando...</h2>
+                <p id="desc-desafio">...</p>
+                
+                <div class="versiculo-box">
+                    <p id="texto-biblico">"..."</p>
+                    <cite id="referencia-biblica"></cite>
+                </div>
+
+                <button onclick="atualizarTudo()" class="btn-ia">🔄 Gerar novo desafio</button>
+                <button class="btn-primary" onclick="concluirTarefa()">Concluir +10 pts</button>
+            </div>
+
+            <div class="card">
+                <h3>🙏 Mural de Oração</h3>
+                <div class="input-group">
+                    <input type="text" id="input-oracao" placeholder="Seu pedido...">
+                    <button onclick="adicionarPedido()">Pedir</button>
+                </div>
+                <ul id="lista-oracoes"></ul>
+            </div>
+            
+            <div class="card" id="card-aprendizado">
+                <h3>📖 Leitura e Aprendizado</h3>
+                <p>O que você aprendeu com a Palavra hoje?</p>
+                <textarea id="comentario-texto" placeholder="Ex: Hoje entendi que a graça de Deus se manifesta nas pequenas coisas..."></textarea>
+                <button class="btn-secondary" onclick="postarAprendizado()">Salvar no meu Histórico (+5 pts)</button>
+            </div>
+        </section> 
+
+        <section id="aba-biblia" class="content-section" style="display:none;">
+            <div class="card">
+                <h3>📖 Consulta Bíblica</h3>
+                <div class="biblia-controles">
+                    <select id="biblia-livro"></select>
+                    <input type="number" id="biblia-cap" placeholder="Cap" min="1" value="1">
+                    <button onclick="lerCapitulo()">Ler</button>
+                </div>
+                <div id="leitura-biblica" class="leitura-container">
+                    <p>Selecione um livro e capítulo para ler.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="aba-historico" class="content-section" style="display:none;">
+            <div class="card">
+                <h3>📜 Histórico de Desafios</h3>
+                <div id="hist-desafios" class="hist-list"></div>
+            </div>
+            <div class="card">
+                <h3>📝 Meus Aprendizados</h3>
+                <div id="hist-aprendizados" class="hist-list"></div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

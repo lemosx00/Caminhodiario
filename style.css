@@ -1,0 +1,127 @@
+:root {
+    --primary: #1a3a5f;
+    --gold: #d4af37;
+    --bg: #f4f7f9;
+    --text: #333;
+}
+
+body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+.app-container { max-width: 450px; margin: auto; }
+
+.card { 
+    background: white; border-radius: 15px; padding: 20px; 
+    margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.user-info { display: flex; flex-direction: column; font-weight: bold; }
+.points-badge { color: var(--gold); font-size: 0.9rem; }
+
+#btn-sos { background: #e74c3c; color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+
+.badge { background: var(--gold); color: white; display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 11px; margin-bottom: 10px; }
+
+.versiculo-box { background: #f9f9f9; padding: 15px; border-left: 4px solid var(--gold); margin: 15px 0; font-style: italic; }
+
+.btn-primary { background: var(--primary); color: white; border: none; width: 100%; padding: 15px; border-radius: 10px; cursor: pointer; font-weight: bold; }
+.btn-secondary { background: #ecf0f1; border: none; padding: 10px; width: 100%; border-radius: 5px; cursor: pointer; }
+
+.input-group { display: flex; gap: 5px; margin-top: 10px; }
+.input-group input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+
+ul { list-style: none; padding: 0; margin-top: 15px; }
+li { background: #fff; border-bottom: 1px solid #eee; padding: 10px; display: flex; justify-content: space-between; align-items: center; }
+.respondido { text-decoration: line-through; color: #aaa; opacity: 0.7; }
+
+/* Modal */
+.modal { display: none; position: fixed; z-index: 10; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); }
+.modal-content { background: white; margin: 15% auto; padding: 25px; border-radius: 15px; width: 85%; position: relative; }
+.close { position: absolute; right: 15px; top: 10px; font-size: 24px; cursor: pointer; }
+
+.btn-audio { background: #eee; border: none; padding: 8px; border-radius: 5px; cursor: pointer; margin: 5px 0; }
+.stop { color: red; }
+textarea { width: 100%; height: 60px; margin: 10px 0; padding: 10px; box-sizing: border-box; }
+.tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+.tab-btn { flex: 1; padding: 10px; border: none; border-radius: 8px; cursor: pointer; background: #ddd; }
+.tab-btn.active { background: var(--primary); color: white; }
+
+.biblia-controles { display: flex; gap: 5px; margin-bottom: 15px; }
+.leitura-container { max-height: 300px; overflow-y: auto; text-align: left; padding: 10px; background: #fdfdfd; border: 1px solid #eee; }
+.leitura-container p { margin-bottom: 8px; line-height: 1.5; }
+
+.item-hist { padding: 10px; border-bottom: 1px solid #eee; font-size: 14px; }
+.hist-list { text-align: left; }
+#select-versao { background: white; border: 1px solid var(--gold); border-radius: 5px; padding: 5px; }
+.item-hist {
+    background: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #eee;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.02);
+}
+
+.item-hist strong {
+    color: var(--primary);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.item-hist small {
+    color: #999;
+    display: block;
+    margin-top: 8px;
+    text-align: right;
+}
+.item-hist {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 2px 4px 8px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+.item-hist small {
+    display: block;
+    color: #d4af37; /* Dourado */
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 5px;
+}
+
+.item-hist blockquote {
+    font-style: italic;
+    color: #555;
+    border-left: 3px solid #1a3a5f; /* Azul Marinho */
+    padding-left: 12px;
+    margin: 10px 0;
+    line-height: 1.4;
+}
+
+.item-hist p {
+    margin: 10px 0 0 0;
+    color: #333;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+.btn-ia {
+    background: #fdfaf0;
+    border: 1px dashed var(--gold);
+    color: var(--gold);
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+.btn-ia:hover {
+    background: #fff5d7;
+    transform: scale(1.02);
+}

@@ -125,3 +125,196 @@ textarea { width: 100%; height: 60px; margin: 10px 0; padding: 10px; box-sizing:
     background: #fff5d7;
     transform: scale(1.02);
 }
+/* Garante que o container se ajuste à largura do celular */
+.app-container {
+    width: 100%;
+    max-width: 500px; /* Limita o tamanho em telas grandes */
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box; /* Evita que o padding aumente a largura */
+}
+
+/* Ajusta as abas para não ficarem espremidas */
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    gap: 5px;
+}
+
+.tab-btn {
+    flex: 1; /* Faz os botões dividirem o espaço igualmente */
+    padding: 10px 5px;
+    font-size: 0.9rem;
+}
+
+/* Ajusta o campo de leitura para telas pequenas */
+.leitura-container {
+    max-height: 60vh; /* Ocupa no máximo 60% da altura da tela */
+    overflow-y: auto;
+    font-size: 1.1rem; /* Melhora a leitura no celular */
+    line-height: 1.6;
+}
+
+/* Imagens e inputs responsivos */
+input, select, textarea, button {
+    width: 100%;
+    box-sizing: border-box;
+}
+.input-group { 
+    display: flex; 
+    gap: 8px; 
+    margin-bottom: 15px;
+}
+
+#input-oracao { 
+    flex: 3;
+    padding: 12px; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    font-size: 16px; /* Tamanho 16px evita que o iPhone dê zoom automático */
+    background: white;
+    color: #333;
+}
+
+.input-group button { 
+    flex: 1;
+    min-width: 70px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Estilo da lista de orações que vai aparecer embaixo */
+#lista-oracoes {
+    padding: 0;
+    margin-top: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#lista-oracoes li {
+    background: #f9f9f9;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 3px solid var(--gold);
+    font-size: 14px;
+}
+.item-oracao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    margin-bottom: 8px;
+    padding: 12px;
+    border-radius: 10px;
+    border-left: 4px solid var(--gold);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.texto-oracao {
+    flex: 1;
+    margin-right: 10px;
+}
+
+/* Container dos botões ao lado do texto */
+.acoes-oracao {
+    display: flex;
+    gap: 10px; /* Espaço entre o Check e o X */
+    align-items: center;
+}
+
+.btn-check, .btn-remover {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto; /* Garante que não herde largura 100% */
+}
+
+.btn-check {
+    color: #2ecc71;
+}
+
+.btn-remover {
+    color: #ff7675;
+    font-size: 1rem;
+}
+
+/* Efeito de riscado quando concluída */
+.item-oracao.concluida span {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.item-oracao.concluida {
+    border-left-color: #2ecc71;
+    background: #f9f9f9;
+}
+/* Container da Oração */
+.item-oracao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 12px;
+    border-left: 5px solid var(--gold);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.texto-oracao {
+    flex: 1; /* Faz o texto ocupar o máximo de espaço */
+    margin-right: 15px;
+}
+
+/* Agrupamento dos botões (Check e X) */
+.acoes-oracao {
+    display: flex;
+    gap: 8px; /* Espaço entre os dois botões */
+    align-items: center;
+}
+
+/* Ajuste específico para que os botões NÃO fiquem gigantes */
+.acoes-oracao button {
+    width: auto !important; /* Força o botão a ter apenas o tamanho do ícone */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-check {
+    color: #2ecc71; /* Verde */
+}
+
+.btn-remover {
+    color: #ff7675; /* Vermelho suave */
+    font-size: 1rem !important;
+}
+
+/* Estilo para quando a oração for alcançada */
+.item-oracao.concluida {
+    border-left-color: #2ecc71;
+    background: #f8fff9;
+}
+
+.item-oracao.concluida span {
+    text-decoration: line-through;
+    color: #888;
+}
